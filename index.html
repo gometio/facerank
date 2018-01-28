@@ -1,1 +1,53 @@
-...
+<!doctype html>
+<html>
+<head>
+<title>Facerank</title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+pppzdet<style>
+p {
+margin: 0;
+font-family: sans-serif;
+text-align: center;
+}
+.main {
+margin: 50px;
+text-align: center;
+}
+.btn {
+background: transparent;
+padding: 0 0 0 0;
+}
+img {
+width: 100%;
+}
+</style>
+<script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
+</head>
+<body onload="load()">
+<div class="main" id="mainport">
+<span><strong>右</strong>か<strong>左</strong><br>どっちが良い？<br><strong>クリックして選択</strong></span><br><br>
+<button class="btn" id="btnR"><img src="#" id="rightImg"></button>
+<button class="btn" id="btnL"><img src="#" id="leftImg"></button><br>
+<button onclick="selectRight()">右を選択</button>
+<button onclick="selectLeft()">左を選択</button><br>
+
+<script>
+var myFirebase = new Firebase('https://honne-a16b2.firebaseio.com');
+var imgNumberR = Math.floor((Math.random() * 8) + 0);
+var imgNumberL = Math.floor((Math.random() * 8) + 0);
+if( imgNumberR == imgNumberL ) {
+var imgNumberL = Math.floor((Math.random() * 8) + 0);
+}
+var imgLine = ["08638C63-6C03-46F3-8EB6-85042D5FC7A8.jpeg","BFAE36D1-A27D-4A21-9EF3-D8352272B359.jpeg","990549B1-0787-48E3-BE43-BCEC85DD637A.jpeg","B99F5475-FC0D-40A8-88E9-7DE20036525B.jpeg","A7DEB3DF-C3FE-4CF7-BEC3-8BBAEFB184EE.jpeg","144E4B74-F947-478F-B57F-C780CD9F9187.jpeg","3FAD3A34-B2BE-425E-A093-9E64D6494774.jpeg","22BA454B-461E-4D38-BD01-3E2CAEF2ADE1.jpeg","2317A918-9E8C-4069-90D0-A783E1BEF291.jpeg"];
+document.getElementById("rightImg").src = "https://gometio.github.io/facerank/img/" + imgLine[imgNumberR];
+document.getElementById("leftImg").src = "https://gometio.github.io/facerank/img/" + imgLine[imgNumberL];
+function selectRight() {
+location.reload();
+}
+function selectLeft() {
+location.reload();
+}
+</script>
+</div>
+</body>
+</html>
